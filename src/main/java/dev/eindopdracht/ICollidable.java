@@ -10,7 +10,8 @@ public interface ICollidable {
         return test1;
     }
 
-    public default void jeMoeder(){
+    public default void jeMoeder() {
         System.out.println("1");
+        System.out.println("2");
     }
 }
