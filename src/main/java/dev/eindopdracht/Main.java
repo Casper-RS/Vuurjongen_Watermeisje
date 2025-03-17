@@ -8,13 +8,11 @@ public class Main extends YaegerGame {
 
     @Override
     public void setupGame() {
-        System.out.println("Hello world!");
-        System.out.println();
+
     }
 
     @Override
     public void setupScenes() {
-        System.out.println("Dikke vinger");
-        System.out.println("test");
+
     }
 }
