@@ -5,4 +5,14 @@ public class Main extends YaegerGame {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }
+
+    @Override
+    public void setupGame() {
+        System.out.println("Hello world!");
+    }
+
+    @Override
+    public void setupScenes() {
+
+    }
 }
