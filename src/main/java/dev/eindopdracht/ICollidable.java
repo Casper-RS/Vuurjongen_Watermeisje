@@ -6,4 +6,7 @@ public interface ICollidable {
     int test3 = 1;
 
 
+    public default int getTest1() {
+        return test1;
+    }
 }
