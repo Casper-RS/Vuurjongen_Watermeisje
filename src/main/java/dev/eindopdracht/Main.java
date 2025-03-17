@@ -6,10 +6,9 @@ public class Main extends YaegerGame {
         System.out.println("Hello world!");
     }
 
-
     @Override
     public void setupGame() {
-
+        System.out.println("Hello world!");
     }
 
     @Override
