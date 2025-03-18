@@ -14,5 +14,6 @@ public class Main extends YaegerGame {
     @Override
     public void setupScenes() {
         System.out.println("test");
+        System.out.println("test2");
     }
 }
