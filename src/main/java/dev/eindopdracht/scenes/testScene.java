@@ -4,6 +4,9 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import dev.eindopdracht.VuurjongenWatermeisje;
 import dev.eindopdracht.entities.sprite.dynamic.Fireboy;
+import dev.eindopdracht.entities.sprite.dynamic.Watergirl;
+
+import java.nio.file.Watchable;
 
 public class testScene extends DynamicScene {
     private VuurjongenWatermeisje vuurjongenWatermeisje;
@@ -22,5 +25,8 @@ public class testScene extends DynamicScene {
     public void setupEntities() {
         var fireboy = new Fireboy(new Coordinate2D(getWidth() / 2, getHeight() / 2));
         addEntity(fireboy);
+
+        var watergirl = new Watergirl(new Coordinate2D(getWidth() / 2, getHeight() / 2));
+        addEntity(watergirl);
     }
 }

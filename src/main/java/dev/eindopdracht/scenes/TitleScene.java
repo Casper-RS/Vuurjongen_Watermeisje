@@ -16,7 +16,7 @@ public class TitleScene extends StaticScene {
     private VuurjongenWatermeisje vuurjongenWatermeisje;
 
     public TitleScene(VuurjongenWatermeisje vuurjongenWatermeisje){
-
+        this.vuurjongenWatermeisje = vuurjongenWatermeisje;
     }
 
     @Override

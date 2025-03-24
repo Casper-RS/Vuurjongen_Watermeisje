@@ -20,10 +20,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     boolean isOnGround = false;
 
     public Player(String resource, Coordinate2D location) {
-        super(resource, location, new Size(30, 50), 1, 2);
+        super(resource, location, new Size(30, 50), 1, 1);
 
         setGravityConstant(0);
-//        setFrictionConstant(0.04);
+        setFrictionConstant(0.04);
     }
 
     public final void moveLeft() {
@@ -45,22 +45,16 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
     @Override
-    public Optional<? extends Node> getNode() {
-        return Optional.empty();
-    }
-
-    @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
 
     }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-        if(pressedKeys.contains(KeyCode.LEFT)){
-            moveLeft();
-        }
-        if(pressedKeys.contains(KeyCode.RIGHT)) {
-            moveRight();
-        }
+        handleMovement(pressedKeys);
+    }
+
+    public void handleMovement(Set<KeyCode> pressedKeys) {
+
     }
 }
