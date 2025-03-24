@@ -8,45 +8,56 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 
-import java.util.Optional;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collider {
     double speed = 1;
     double jumpstrenght = 1;
-    boolean isOnGround = false;
 
     public Player(String resource, Coordinate2D location) {
         super(resource, location, new Size(30, 50), 1, 1);
 
-        setGravityConstant(0);
+        setGravityConstant(0.05);
         setFrictionConstant(0.04);
     }
 
     public final void moveLeft() {
-        setMotion(3,270d);
+        setMotion(speed, 270d);
         setCurrentFrameIndex(0);
     }
 
     public final void moveRight() {
-        setMotion(3, 90d);
+        setMotion(speed, 90d);
         setCurrentFrameIndex(1);
-    }
-
-    public void jump() {
-
     }
 
     public void onCollision() {
 
     }
 
+    public void jump(Player p, boolean isOnGround) {
+        if (isOnGround) {
+            setMotion(jumpstrenght, 180d);
+        }
+    }
+
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
-
+        switch (sceneBorder) {
+            case TOP:
+                setAnchorLocationY(1);
+                break;
+            case BOTTOM:
+                setAnchorLocationY(getSceneHeight() - getHeight() - 1);
+                break;
+            case LEFT:
+                setAnchorLocationX(1);
+                break;
+            case RIGHT:
+                setAnchorLocationX(getSceneWidth() - getWidth() - 1);
+        }
     }
 
     @Override
@@ -55,6 +66,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
     public void handleMovement(Set<KeyCode> pressedKeys) {
-
+        //movement is different for each kind of character
     }
 }

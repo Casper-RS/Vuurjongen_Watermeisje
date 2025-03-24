@@ -5,12 +5,16 @@ import javafx.scene.input.KeyCode;
 import java.util.Set;
 
 public class Fireboy extends Player{
+
+    public boolean isOnground = true;
+
     public Fireboy(Coordinate2D location) {
         super("sprites/fireboy.png", location);
     }
 
     @Override
     public void onCollision() {
+        System.out.println("Fireboy");
     }
 
     @Override
@@ -21,6 +25,21 @@ public class Fireboy extends Player{
         if (pressedKeys.contains(KeyCode.D)) {
             moveRight();
         }
+        if (pressedKeys.contains(KeyCode.W)) {
+            jump(this, isOnground);
+        }
+    }
+
+    public boolean getIsOnground() {
+        return isOnground;
+    }
+
+    public void toggleIsOnground() {
+        isOnground = !isOnground;
+    }
+
+    public void setIsOnground(boolean isOnground) {
+        this.isOnground = isOnground;
     }
 }
 
