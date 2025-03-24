@@ -3,8 +3,11 @@ package dev.eindopdracht.scenes;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
+import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import dev.eindopdracht.VuurjongenWatermeisje;
+import dev.eindopdracht.entities.sprite.dynamic.Fireboy;
+import dev.eindopdracht.entities.sprite.dynamic.Player;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -45,6 +48,5 @@ public class TitleScene extends StaticScene {
         andSymbol.setFill(Color.DARKGRAY);
         andSymbol.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
         addEntity(andSymbol);
-
     }
 }

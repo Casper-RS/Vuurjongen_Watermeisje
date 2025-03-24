@@ -1,8 +1,10 @@
 package dev.eindopdracht.entities.sprite.dynamic;
 
+import com.github.hanyaeger.api.Coordinate2D;
+
 public class Watergirl extends Player{
-    public Watergirl(int x, int y, int speed, int jumpstrenght) {
-        super(x, y, speed, jumpstrenght);
+    public Watergirl(Coordinate2D location) {
+        super("sprites/watergirl.png", location);
     }
 
     @Override
