@@ -1,6 +1,12 @@
 package dev.eindopdracht.entities.sprite.dynamic;
 
-public class Player {
+import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import javafx.scene.Node;
+
+import java.util.Optional;
+
+public class Player /*extends DynamicSpriteEntity*/ {
     float x, y;
     double speed;
     double jumpstrenght;
@@ -22,6 +28,10 @@ public class Player {
     }
 
     public void jump() {
+
+    }
+
+    public void onCollision() {
 
     }
 }
