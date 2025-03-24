@@ -3,11 +3,10 @@ package dev.eindopdracht.scenes;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
-import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import dev.eindopdracht.VuurjongenWatermeisje;
-import dev.eindopdracht.entities.sprite.dynamic.Fireboy;
-import dev.eindopdracht.entities.sprite.dynamic.Player;
+import dev.eindopdracht.entities.buttons.StartButton;
+import dev.eindopdracht.shapes.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -48,5 +47,20 @@ public class TitleScene extends StaticScene {
         andSymbol.setFill(Color.DARKGRAY);
         andSymbol.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
         addEntity(andSymbol);
+
+        var playGameBorder = new Rectangle(new Coordinate2D(getWidth() / 2, getHeight() - getHeight() / 5),
+                AnchorPoint.CENTER_CENTER,
+                300, 60,
+                Color.DARKSLATEGRAY,
+                0.6,
+                15,
+                15);
+
+
+        addEntity(playGameBorder);
+
+        var playGameText = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() - getHeight()/ 5), vuurjongenWatermeisje);
+        playGameText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        addEntity(playGameText);
     }
 }
