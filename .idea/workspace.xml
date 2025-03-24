@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2e52acc-94c8-47b0-aeb1-6a899bd8fbcb" name="Changes" comment="Test for discord webhook intergration.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="c2e52acc-94c8-47b0-aeb1-6a899bd8fbcb" name="Changes" comment="Added a test println to">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/eindopdracht/scenes/TitleScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/backgrounds/titleBackground1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/backgrounds/titleBackground2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/backgrounds/titlescreen.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/eindopdracht/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/eindopdracht/VuurjongenWatermeisje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/eindopdracht/entities/buttons/button1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/eindopdracht/entities/buttons/StartButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/eindopdracht/scenes/VWLevel1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/eindopdracht/scenes/VWLevel1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +46,12 @@
     &quot;assignee&quot;: &quot;PinballPRO07&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Casper-RS/Vuurjongen_Watermeisje.git",
-    "accountId": "454249f2-e69d-4ddd-bd9d-b753f0b38753"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Casper-RS/Vuurjongen_Watermeisje.git&quot;,
+    &quot;accountId&quot;: &quot;454249f2-e69d-4ddd-bd9d-b753f0b38753&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -57,15 +63,41 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.VuurjongenWatermeisje.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "development",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "Errors"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\caspe\Documents\GitHub\Vuurjongen_Watermeisje\src\main\resources\backgrounds" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="VuurjongenWatermeisje" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dev.eindopdracht.VuurjongenWatermeisje" />
+      <module name="Vuurjongen_Watermeisje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.eindopdracht.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.VuurjongenWatermeisje" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -131,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742292373140</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added .idea folder to gitignore.">
+      <option name="closed" value="true" />
+      <created>1742459806311</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1742459806311</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +188,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="twessf" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="Added .idea folder to gitignore." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added .idea folder to gitignore." />
   </component>
 </project>
