@@ -38,7 +38,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
     public void jump(Player p) {
-        if (p.isOnGround) {
+        if (p instanceof Fireboy) {
+            ((Fireboy) p).isOnground = true;
             setMotion(jumpstrenght, 180d);
             //p.isOnGround = false;
         }
