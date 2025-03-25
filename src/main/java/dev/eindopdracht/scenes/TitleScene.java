@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import dev.eindopdracht.VuurjongenWatermeisje;
 import dev.eindopdracht.entities.buttons.StartButton;
+import dev.eindopdracht.entities.buttons.levelButton;
 import dev.eindopdracht.shapes.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -47,6 +48,20 @@ public class TitleScene extends StaticScene {
         andSymbol.setFill(Color.DARKGRAY);
         andSymbol.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
         addEntity(andSymbol);
+
+        var selectLevelBorder = new Rectangle(new Coordinate2D(getWidth() / 2, getHeight() - getHeight() / 3),
+                AnchorPoint.CENTER_CENTER,
+                300, 60,
+                Color.DARKSLATEGRAY,
+                0.6,
+                15,
+                15);
+
+        addEntity(selectLevelBorder);
+
+        var selectLevelText = new levelButton(new Coordinate2D(getWidth() / 2, getHeight() - getHeight() / 3), vuurjongenWatermeisje);
+        selectLevelText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        addEntity(selectLevelText);
 
         var playGameBorder = new Rectangle(new Coordinate2D(getWidth() / 2, getHeight() - getHeight() / 5),
                 AnchorPoint.CENTER_CENTER,

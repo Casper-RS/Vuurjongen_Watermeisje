@@ -18,7 +18,14 @@ public class VuurjongenWatermeisje extends YaegerGame {
 
     @Override
     public void setupScenes(){
+
+        //titlescene
         addScene(0, new TitleScene(this));
+
+        //levelscenes
         addScene(1, new testScene(this));
+
+        //others
+        //addScene(101, new levelScene(this));
     }
 }

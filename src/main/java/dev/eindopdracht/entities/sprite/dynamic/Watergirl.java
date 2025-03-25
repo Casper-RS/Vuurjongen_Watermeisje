@@ -26,7 +26,7 @@ public class Watergirl extends Player {
             moveRight();
         }
         if (pressedKeys.contains(KeyCode.UP)) {
-            jump(this, isOnGround);
+            jump(this);
         }
     }
 }

@@ -14,12 +14,12 @@ import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collider {
     double speed = 1;
-    double jumpstrenght = 1;
+    double jumpstrenght = 4;
 
     public Player(String resource, Coordinate2D location) {
         super(resource, location, new Size(30, 50), 1, 1);
 
-        setGravityConstant(0.05);
+        setGravityConstant(0.08);
         setFrictionConstant(0.04);
     }
 
@@ -39,9 +39,15 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     public void jump(Player p) {
         if (p instanceof Fireboy) {
-            ((Fireboy) p).isOnground = true;
-            setMotion(jumpstrenght, 180d);
-            //p.isOnGround = false;
+            if(((Fireboy) p).isOnground) {
+                setMotion(jumpstrenght, 180d);
+                ((Fireboy) p).isOnground = false;
+            }
+        } else if(p instanceof Watergirl) {
+            if(((Watergirl) p).isOnGround) {
+                setMotion(jumpstrenght, 180d);
+                ((Watergirl) p).isOnGround = false;
+            }
         }
     }
 

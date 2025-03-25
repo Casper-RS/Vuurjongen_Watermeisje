@@ -23,10 +23,10 @@ public class testScene extends DynamicScene {
 
     @Override
     public void setupEntities() {
-        var fireboy = new Fireboy(new Coordinate2D(getWidth() / 2, getHeight() / 2));
+        Fireboy fireboy = new Fireboy(new Coordinate2D(getWidth() / 2, getHeight() / 2));
         addEntity(fireboy);
 
-        var watergirl = new Watergirl(new Coordinate2D(getWidth() / 2, getHeight() / 2));
+        Watergirl watergirl = new Watergirl(new Coordinate2D(getWidth() / 2, getHeight() / 2));
         addEntity(watergirl);
     }
 }
