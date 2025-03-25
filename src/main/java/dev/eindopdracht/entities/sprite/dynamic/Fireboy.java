@@ -26,7 +26,7 @@ public class Fireboy extends Player{
             moveRight();
         }
         if (pressedKeys.contains(KeyCode.W)) {
-            jump(this, isOnground);
+            jump(this);
         }
     }
 
