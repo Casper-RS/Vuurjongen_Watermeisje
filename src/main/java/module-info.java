@@ -1,6 +1,7 @@
 module Vuurjongen.Watermeisje {
     requires hanyaeger;
     requires org.checkerframework.checker.qual;
+    requires java.desktop;
     exports dev.eindopdracht;
 
     opens audio;
