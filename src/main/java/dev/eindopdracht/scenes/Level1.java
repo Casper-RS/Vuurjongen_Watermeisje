@@ -2,16 +2,16 @@ package dev.eindopdracht.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.api.scenes.TileMapContainer;
 import dev.eindopdracht.VuurjongenWatermeisje;
+import dev.eindopdracht.entities.map.Level_1;
 import dev.eindopdracht.entities.sprite.dynamic.Fireboy;
 import dev.eindopdracht.entities.sprite.dynamic.Watergirl;
 
-import java.nio.file.Watchable;
-
-public class testScene extends DynamicScene {
+public class Level1 extends DynamicScene implements TileMapContainer {
     private VuurjongenWatermeisje vuurjongenWatermeisje;
 
-    public testScene(VuurjongenWatermeisje vuurjongenWatermeisje) {
+    public Level1(VuurjongenWatermeisje vuurjongenWatermeisje) {
         this.vuurjongenWatermeisje = vuurjongenWatermeisje;
     }
 
@@ -20,9 +20,14 @@ public class testScene extends DynamicScene {
         setBackgroundImage("backgrounds/titlescreen.png");
 
     }
+    @Override
+    public void setupTileMaps() {
+        addTileMap(new Level_1());
+    }
 
     @Override
     public void setupEntities() {
+
         var fireboy = new Fireboy(new Coordinate2D(getWidth() / 2, getHeight() / 2));
         addEntity(fireboy);
 
