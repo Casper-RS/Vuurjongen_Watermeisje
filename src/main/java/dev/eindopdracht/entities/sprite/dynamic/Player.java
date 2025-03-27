@@ -17,35 +17,19 @@ import java.util.List;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collider, Collided {
-
+    Wall wall;
     public boolean isOnground = true;
 
     private double speed = 1;
-    private double jumpstrenght = 4;
     protected boolean touchingWall = false;
-
     private VuurjongenWatermeisje vuurjongenWatermeisje;
 
     public Player(String resource, Coordinate2D location, VuurjongenWatermeisje vuurjongenWatermeisje) {
-        super(resource, location, new Size(30, 50), 1, 1);
+        super(resource, location, new Size(50, 70), 1, 1);
         setGravityConstant(0.08);
         setFrictionConstant(0.04);
     }
 
-    public final void moveLeft() {
-        setMotion(speed, 270d);
-        setCurrentFrameIndex(0);
-    }
-
-    public final void moveRight() {
-        setMotion(speed, 90d);
-        setCurrentFrameIndex(1);
-    }
-
-    @Override
-    public Coordinate2D getAnchorLocation() {
-        return super.getAnchorLocation();
-    }
 
     @Override
     public void onCollision(List<Collider> collidingObject) {
@@ -58,17 +42,45 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         }
 
         if (wallCollision) {
-            setMotion(0, 0d);
-            System.out.println("Je raakt een muur stumperd");
+            setMotion(0 , 0d);
         }
     }
 
+    public final void moveLeft() {
+        if(getAnchorLocation().getX() - 1 >= 27){
+            setMotion(speed, 270d);
+            setCurrentFrameIndex(0);
+            System.out.println("Bewogen naar:");
+            System.out.println("X-Pos: " + getAnchorLocation().getX());
+            System.out.println("Y-Pos: " + getAnchorLocation().getY());
+
+        } else {
+            System.out.println("Muur geraakt");
+            System.out.println("X-Pos: " + getAnchorLocation().getX());
+            System.out.println("Y-Pos: " + getAnchorLocation().getY());
+        }
+    }
+
+    public final void moveRight() {
+        setMotion(speed, 90d);
+        setCurrentFrameIndex(1);
+    }
+
+
+    @Override
+    public Coordinate2D getAnchorLocation() {
+        return super.getAnchorLocation();
+    }
+
+
+
 
     public void jump(Player p) {
+        double jumpstrenght = 4;
         if (p instanceof Fireboy) {
             if (((Fireboy) p).isOnground) {
                 setMotion(jumpstrenght, 180d);
-                ((Fireboy) p).isOnground = false;
+                ((Fireboy) p).isOnground = true;
             }
         } else if (p instanceof Watergirl) {
             if (((Watergirl) p).isOnGround) {
@@ -87,7 +99,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 break;
             case BOTTOM:
                 setAnchorLocationY(getSceneHeight() - getHeight() - 1);
-
                 break;
             case LEFT:
                 setAnchorLocationX(1);
