@@ -11,4 +11,6 @@ module Vuurjongen.Watermeisje {
     exports dev.eindopdracht.scenes;
     exports dev.eindopdracht.entities.buttons;
     exports dev.eindopdracht.entities;
+    exports dev.eindopdracht.entities.map;
+
 }
