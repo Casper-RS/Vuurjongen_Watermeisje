@@ -15,6 +15,7 @@ import javafx.scene.text.FontWeight;
 public class TitleScene extends StaticScene {
 
     private VuurjongenWatermeisje vuurjongenWatermeisje;
+    private static int currLevelSelection = 1;
 
     public TitleScene(VuurjongenWatermeisje vuurjongenWatermeisje){
         this.vuurjongenWatermeisje = vuurjongenWatermeisje;
@@ -77,5 +78,9 @@ public class TitleScene extends StaticScene {
         var playGameText = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() - getHeight()/ 5), vuurjongenWatermeisje);
         playGameText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         addEntity(playGameText);
+    }
+
+    public static void setLevelSelection(int level){
+        currLevelSelection = level;
     }
 }
