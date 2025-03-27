@@ -2,6 +2,7 @@ package dev.eindopdracht;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 import dev.eindopdracht.scenes.TitleScene;
+import dev.eindopdracht.scenes.levelScene;
 import dev.eindopdracht.scenes.testScene;
 
 public class VuurjongenWatermeisje extends YaegerGame {
@@ -13,7 +14,7 @@ public class VuurjongenWatermeisje extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Vuurjongen & Watermeisje");
-        setSize(new Size(1000, 800));
+        setSize(new Size(1024, 800));
     }
 
     @Override
@@ -26,6 +27,6 @@ public class VuurjongenWatermeisje extends YaegerGame {
         addScene(1, new testScene(this));
 
         //others
-        //addScene(101, new levelScene(this));
+        addScene(101, new levelScene(this));
     }
 }
