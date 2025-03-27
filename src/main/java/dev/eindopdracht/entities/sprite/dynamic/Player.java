@@ -59,7 +59,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
         if (wallCollision) {
             setMotion(0, 0d);
-            System.out.println("Je raakt een muur sukkel");
+            System.out.println("Je raakt een muur stumperd");
         }
     }
 
