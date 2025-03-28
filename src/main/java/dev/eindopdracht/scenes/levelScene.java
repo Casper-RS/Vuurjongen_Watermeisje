@@ -2,13 +2,19 @@ package dev.eindopdracht.scenes;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import dev.eindopdracht.VuurjongenWatermeisje;
 import dev.eindopdracht.entities.buttons.BackButton;
 import dev.eindopdracht.entities.buttons.SelectLevelButton;
+import dev.eindopdracht.entities.sprite.fixed.GameImage;
+import dev.eindopdracht.entities.sprite.fixed.ImageLoader;
 import dev.eindopdracht.shapes.Circle;
 import dev.eindopdracht.shapes.Rectangle;
 import javafx.scene.paint.Color;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class levelScene extends DynamicScene {
 
@@ -17,8 +23,11 @@ public class levelScene extends DynamicScene {
 
     private int[] starsObtained = {0, 0, 0};
 
+    private List<String> levelImages;
+
     public levelScene(VuurjongenWatermeisje v) {
         this.vuurjongenWatermeisje = v;
+        this.levelImages = ImageLoader.getImagePaths("C:\\Users\\Daan van Vliet\\Documents\\GitHub\\Vuurjongen_Watermeisje\\src\\main\\resources\\backgrounds\\LevelImages");
     }
 
     @Override
@@ -53,6 +62,8 @@ public class levelScene extends DynamicScene {
 
         displayStars(position, starsObtained);
 
+        displayImage(position, levelNumber, boxWidth);
+
         addLevelButton(position, levelNumber);
     }
 
@@ -70,6 +81,14 @@ public class levelScene extends DynamicScene {
             Circle starCircle = new Circle(new Coordinate2D(startX + (i * spacing), startY), starRadius, fillColor);
             addEntity(starCircle);
         }
+    }
+
+    private void displayImage(Coordinate2D boxCenter, int levelNumber, double boxWidth) {
+
+        String path = (levelNumber - 1 < levelImages.size()) ? levelImages.get(levelNumber - 1) : "C:\\Users\\Daan van Vliet\\Documents\\GitHub\\Vuurjongen_Watermeisje\\src\\main\\resources\\backgrounds\\LevelImages\\1.jpg";
+
+        GameImage myImage = new GameImage(path, boxCenter, 150, new Size(boxWidth * 0.8, (boxWidth * 0.8) / 2 ));
+        addEntity(myImage);
     }
 
     private void addLevelButton(Coordinate2D boxCenter, int levelNumber) {
