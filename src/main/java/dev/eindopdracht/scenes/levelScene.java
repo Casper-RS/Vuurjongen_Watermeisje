@@ -27,7 +27,8 @@ public class levelScene extends DynamicScene {
 
     public levelScene(VuurjongenWatermeisje v) {
         this.vuurjongenWatermeisje = v;
-        this.levelImages = ImageLoader.getImagePaths("C:\\Users\\Daan van Vliet\\Documents\\GitHub\\Vuurjongen_Watermeisje\\src\\main\\resources\\LevelImages");
+        //this.levelImages = ImageLoader.getImagePaths("C:\\Users\\Daan van Vliet\\Documents\\GitHub\\Vuurjongen_Watermeisje\\src\\main\\resources\\LevelImages");
+        this.levelImages = ImageLoader.getImagePaths("resources/LevelImages");
     }
 
     @Override
@@ -85,7 +86,8 @@ public class levelScene extends DynamicScene {
 
     private void displayImage(Coordinate2D boxCenter, int levelNumber, double boxWidth) {
 
-        String path = (levelNumber - 1 < levelImages.size()) ? levelImages.get(levelNumber - 1) : "C:\\Users\\Daan van Vliet\\Documents\\GitHub\\Vuurjongen_Watermeisje\\src\\main\\resources\\LevelImages\\1.jpg";
+        //String path = (levelNumber - 1 < levelImages.size()) ? levelImages.get(levelNumber - 1) : "LevelImages/default.png";
+        String path = "LevelImages/" + levelNumber + ".jpg";
 
         GameImage myImage = new GameImage(path, boxCenter, 150, new Size(boxWidth * 0.8, (boxWidth * 0.8) / 2 ));
         addEntity(myImage);
