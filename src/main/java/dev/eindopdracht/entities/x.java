@@ -1,4 +1,4 @@
 package dev.eindopdracht.entities;
 
-public class Entity1 {
+public class x {
 }

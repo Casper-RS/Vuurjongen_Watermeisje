@@ -7,10 +7,10 @@ module Vuurjongen.Watermeisje {
     opens audio;
     opens backgrounds;
     opens sprites;
+    opens LevelImages;
 
     exports dev.eindopdracht.scenes;
     exports dev.eindopdracht.entities.buttons;
     exports dev.eindopdracht.entities;
     exports dev.eindopdracht.entities.map;
-
 }
