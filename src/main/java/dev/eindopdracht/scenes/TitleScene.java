@@ -83,4 +83,7 @@ public class TitleScene extends StaticScene {
     public static void setLevelSelection(int level){
         currLevelSelection = level;
     }
+    public static int getLevelSelection(){
+        return currLevelSelection;
+    }
 }

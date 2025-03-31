@@ -2,6 +2,7 @@ package dev.eindopdracht.entities.buttons;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import dev.eindopdracht.VuurjongenWatermeisje;
+import dev.eindopdracht.scenes.TitleScene;
 import javafx.scene.input.MouseButton;
 
 public class StartButton extends BaseButton {
@@ -15,6 +16,6 @@ public class StartButton extends BaseButton {
 
     @Override
     public void onMouseButtonPressed(final MouseButton button, final Coordinate2D coordinate2D) {
-        vuurjongenWatermeisje.setActiveScene(1);
+        vuurjongenWatermeisje.setActiveScene(TitleScene.getLevelSelection());
     }
 }
