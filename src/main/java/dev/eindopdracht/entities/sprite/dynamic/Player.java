@@ -10,6 +10,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import dev.eindopdracht.VuurjongenWatermeisje;
+import dev.eindopdracht.entities.map.Door;
 import dev.eindopdracht.entities.map.Wall;
 import javafx.scene.input.KeyCode;
 
@@ -22,7 +23,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private VuurjongenWatermeisje vuurjongenWatermeisje;
 
     public Player(String resource, Coordinate2D location, VuurjongenWatermeisje vuurjongenWatermeisje) {
-        super(resource, location, new Size(45, 60), 1, 1);
+        super(resource, location, new Size(30, 45), 1, 1);
         setGravityConstant(0.12);
         setFrictionConstant(0.04);
     }
@@ -33,6 +34,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         isOnground = false; // Reset every frame
 
         for (Collider collider : collidingObjects) {
+            if (collider instanceof Door door){
+                vuurjongenWatermeisje.setActiveScene(0);
+                System.out.println("Deur geraakt");
+            }
             if (collider instanceof Wall wall) {
                 var wallBox = wall.getBoundingBox();
                 var playerBox = this.getBoundingBox();
@@ -52,19 +57,19 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 }
 
                 // ============ BOTTOM COLLISION ============
-                else if (smallestOverlap == overlapBottom) {
+                if (smallestOverlap == overlapBottom) {
                     setAnchorLocationY(wallBox.getMaxY() + 0.5); // small push down
                     // Allow falling
                 }
 
                 // ============ LEFT COLLISION ============
-                else if (smallestOverlap == overlapLeft) {
+                if (smallestOverlap == overlapLeft) {
                     setAnchorLocationX(wallBox.getMinX() - getWidth() - 0.5); // small push left
                     // Allow falling
                 }
 
                 // ============ RIGHT COLLISION ============
-                else if (smallestOverlap == overlapRight) {
+                if (smallestOverlap == overlapRight) {
                     setAnchorLocationX(wallBox.getMaxX() + 0.5); // small push right
                     // Allow falling
                 }
@@ -76,8 +81,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         //check 1 pixel voor kant die de speler oploopt
         if (getAnchorLocation().getX() - 1 >= 12) {
             setMotion(speed, 270d);
-            setCurrentFrameIndex(0);
-            System.out.println("Bewogen naar:");
             if (verbose) {
                 System.out.println("Bewogen naar:");
                 System.out.println("X-Pos: " + getAnchorLocation().getX());
@@ -90,7 +93,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         //check 1 pixel voor kant die de speler oploopt
         if (getAnchorLocation().getX() + 1 >= getWidth() - 50) {
             setMotion(speed, 90d);
-            setCurrentFrameIndex(0);
             if (verbose) {
                 System.out.println("Bewogen naar:");
                 System.out.println("X-Pos: " + getAnchorLocation().getX());
@@ -108,7 +110,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     // 800 x 1024 / 35
     public void jump(Player p) {
-        double jumpStrength = 4;
+        double jumpStrength = 7;
 
         if (p instanceof Fireboy && p.isOnground) {
             setMotion(jumpStrength, 180d);
