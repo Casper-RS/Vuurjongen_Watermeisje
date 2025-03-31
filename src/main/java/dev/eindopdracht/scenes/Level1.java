@@ -12,7 +12,7 @@ public class Level1 extends LevelCreator implements TileMapContainer {
 
     @Override
     public void setupScene() {
-        setBackgroundImage("backgrounds/titlescreen.png");
+        setBackgroundImage("backgrounds/1.png");
 
     }
     @Override
