@@ -17,37 +17,58 @@ import java.util.List;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collider, Collided {
-    Wall wall;
     public boolean isOnground = true;
-
+    private List<Collider> lastCollisions;
     private double speed = 1;
     protected boolean touchingWall = false;
     private VuurjongenWatermeisje vuurjongenWatermeisje;
 
     public Player(String resource, Coordinate2D location, VuurjongenWatermeisje vuurjongenWatermeisje) {
-        super(resource, location, new Size(50, 70), 1, 1);
+        super(resource, location, new Size(60, 80), 1, 1);
         setGravityConstant(0.08);
         setFrictionConstant(0.04);
     }
 
 
     @Override
-    public void onCollision(List<Collider> collidingObject) {
-        var wallCollision = false;
+    public void onCollision(List<Collider> collidingObjects) {
+        lastCollisions = collidingObjects; // store for later use
 
-        for (Collider collider : collidingObject) {
+        boolean wallCollision = false;
+
+        for (Collider collider : collidingObjects) {
             if (collider instanceof Wall) {
                 wallCollision = true;
+                isOnground = true;
+                // If the wall is beneath the player, they are "on ground"
+                if (collider.getBoundingBox().getMinY() >= this.getBoundingBox().getMaxY() - 1) {
+                    isOnground = true;
+                }
             }
         }
 
         if (wallCollision) {
-            setMotion(0 , 0d);
+            setMotion(0, 0);
         }
     }
 
+
+
+    public boolean isStandingOnWall() {
+        for (Collider collider : lastCollisions) {
+            if (collider instanceof Wall) {
+                if (collider.getBoundingBox().getMinY() >= this.getBoundingBox().getMaxY() - 1) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
     public final void moveLeft() {
-        if(getAnchorLocation().getX() - 1 >= 27){
+        //check 1 pixel voor kant die de speler oploopt
+        if (getAnchorLocation().getX() - 1 >= 12) {
             setMotion(speed, 270d);
             setCurrentFrameIndex(0);
             System.out.println("Bewogen naar:");
@@ -62,8 +83,19 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
     public final void moveRight() {
-        setMotion(speed, 90d);
-        setCurrentFrameIndex(1);
+        //check 1 pixel voor kant die de speler oploopt
+        if (getAnchorLocation().getX() + 1 >= getWidth() - 50) {
+            setMotion(speed, 90d);
+            setCurrentFrameIndex(0);
+            System.out.println("Bewogen naar:");
+            System.out.println("X-Pos: " + getAnchorLocation().getX());
+            System.out.println("Y-Pos: " + getAnchorLocation().getY());
+
+        } else {
+            System.out.println("Muur geraakt");
+            System.out.println("X-Pos: " + getAnchorLocation().getX());
+            System.out.println("Y-Pos: " + getAnchorLocation().getY());
+        }
     }
 
 
@@ -73,22 +105,19 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
 
-
-
+    // 800 x 1024 / 35
     public void jump(Player p) {
-        double jumpstrenght = 4;
-        if (p instanceof Fireboy) {
-            if (((Fireboy) p).isOnground) {
-                setMotion(jumpstrenght, 180d);
-                ((Fireboy) p).isOnground = true;
-            }
-        } else if (p instanceof Watergirl) {
-            if (((Watergirl) p).isOnGround) {
-                setMotion(jumpstrenght, 180d);
-                ((Watergirl) p).isOnGround = false;
-            }
+        double jumpStrength = 4;
+
+        if (p instanceof Fireboy && p.isOnground) {
+            setMotion(jumpStrength, 180d);
+            p.isOnground = false;
+        } else if (p instanceof Watergirl && ((Watergirl) p).isOnGround) {
+            setMotion(jumpStrength, 180d);
+            ((Watergirl) p).isOnGround = false;
         }
     }
+
 
     // =================[ CHECK if player hits borders ]=================
     @Override

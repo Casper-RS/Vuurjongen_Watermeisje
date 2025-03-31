@@ -11,11 +11,4 @@ public class Wall extends SpriteEntity implements Collider {
         super(resource, location, size);
     }
 
-    public double getWallWidth() {
-        return getWidth();  // Komt van SpriteEntity
-    }
-
-    public double getWallHeight() {
-        return getHeight(); // Komt ook van SpriteEntity
-    }
 }

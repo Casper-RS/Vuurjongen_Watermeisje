@@ -28,10 +28,10 @@ public class Level1 extends DynamicScene implements TileMapContainer {
     @Override
     public void setupEntities() {
 
-        var fireboy = new Fireboy(new Coordinate2D(getWidth() / 2, getHeight() / 2), vuurjongenWatermeisje);
+        var fireboy = new Fireboy(new Coordinate2D(getWidth() / 2, getHeight() - 150), vuurjongenWatermeisje);
         addEntity(fireboy);
 
-        var watergirl = new Watergirl(new Coordinate2D(getWidth() / 2, getHeight() / 2), vuurjongenWatermeisje);
+        var watergirl = new Watergirl(new Coordinate2D(getWidth() / 2, getHeight() - 75), vuurjongenWatermeisje);
         addEntity(watergirl);
     }
 }
