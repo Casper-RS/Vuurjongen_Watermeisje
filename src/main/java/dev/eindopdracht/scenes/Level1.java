@@ -1,18 +1,13 @@
 package dev.eindopdracht.scenes;
 
-import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import dev.eindopdracht.VuurjongenWatermeisje;
 import dev.eindopdracht.entities.map.Level_1;
-import dev.eindopdracht.entities.sprite.dynamic.Fireboy;
-import dev.eindopdracht.entities.sprite.dynamic.Watergirl;
 
-public class Level1 extends DynamicScene implements TileMapContainer {
-    private VuurjongenWatermeisje vuurjongenWatermeisje;
+public class Level1 extends LevelCreator implements TileMapContainer {
 
     public Level1(VuurjongenWatermeisje vuurjongenWatermeisje) {
-        this.vuurjongenWatermeisje = vuurjongenWatermeisje;
+        super(vuurjongenWatermeisje);
     }
 
     @Override
@@ -27,11 +22,6 @@ public class Level1 extends DynamicScene implements TileMapContainer {
 
     @Override
     public void setupEntities() {
-
-        var fireboy = new Fireboy(new Coordinate2D(getWidth() / 2, getHeight() - 150), vuurjongenWatermeisje);
-        addEntity(fireboy);
-
-        var watergirl = new Watergirl(new Coordinate2D(getWidth() / 2, getHeight() - 75), vuurjongenWatermeisje);
-        addEntity(watergirl);
+        createCharacters();
     }
 }
