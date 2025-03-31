@@ -3,6 +3,7 @@ package dev.eindopdracht.scenes;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import dev.eindopdracht.VuurjongenWatermeisje;
 import dev.eindopdracht.entities.map.Level_1;
+import dev.eindopdracht.entities.map.Level_2;
 
 public class Level2 extends LevelCreator implements TileMapContainer {
 
