@@ -33,7 +33,7 @@ public class Fireboy extends Player {
             moving = true;
         }
         if (!moving) {
-            setSpeed(0); // Stop movement when no key is pressed
+            setSpeed(50); // Stop movement when no key is pressed
         }
     }
 }
