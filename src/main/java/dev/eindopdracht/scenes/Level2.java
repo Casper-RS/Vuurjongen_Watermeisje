@@ -23,6 +23,6 @@ public class Level2 extends LevelCreator implements TileMapContainer {
 
     @Override
     public void setupEntities() {
-        createCharacters();
+        createCharacters(20, 20);
     }
 }

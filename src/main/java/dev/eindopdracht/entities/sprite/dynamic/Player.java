@@ -112,9 +112,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         if (p instanceof Fireboy && p.isOnground) {
             setMotion(jumpStrength, 180d);
             p.isOnground = false;
-        } else if (p instanceof Watergirl && ((Watergirl) p).isOnGround) {
+        }
+        if (p instanceof Watergirl && p.isOnground) {
             setMotion(jumpStrength, 180d);
-            ((Watergirl) p).isOnGround = false;
+            p.isOnground = false;
         }
     }
 

@@ -90,6 +90,7 @@ public class levelScene extends DynamicScene {
         String path = "LevelImages/" + levelNumber + ".jpg";
 
         GameImage myImage = new GameImage(path, boxCenter, 150, new Size(boxWidth * 0.8, (boxWidth * 0.8) / 2 ));
+        myImage.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         addEntity(myImage);
     }
 

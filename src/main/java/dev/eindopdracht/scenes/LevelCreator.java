@@ -26,7 +26,7 @@ public abstract class LevelCreator extends DynamicScene implements TileMapContai
 
     }
 
-    public void createCharacters() {
+    public void createCharacters(double x, double y) {
         var fireboy = new Fireboy(new Coordinate2D(getWidth() / 2, getHeight() / 2), vuurjongenWatermeisje);
         addEntity(fireboy);
 
