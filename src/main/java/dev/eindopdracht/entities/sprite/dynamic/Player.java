@@ -24,34 +24,56 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private VuurjongenWatermeisje vuurjongenWatermeisje;
 
     public Player(String resource, Coordinate2D location, VuurjongenWatermeisje vuurjongenWatermeisje) {
-        super(resource, location, new Size(60, 80), 1, 1);
-        setGravityConstant(0.08);
+        super(resource, location, new Size(45, 60), 1, 1);
+        setGravityConstant(0.12);
         setFrictionConstant(0.04);
     }
 
 
     @Override
     public void onCollision(List<Collider> collidingObjects) {
-        lastCollisions = collidingObjects; // store for later use
-
-        boolean wallCollision = false;
+        lastCollisions = collidingObjects;
+        isOnground = false; // Reset every frame
 
         for (Collider collider : collidingObjects) {
-            if (collider instanceof Wall) {
-                wallCollision = true;
-                isOnground = true;
-                // If the wall is beneath the player, they are "on ground"
-                if (collider.getBoundingBox().getMinY() >= this.getBoundingBox().getMaxY() - 1) {
+            if (collider instanceof Wall wall) {
+                var wallBox = wall.getBoundingBox();
+                var playerBox = this.getBoundingBox();
+
+                double overlapTop = Math.abs(playerBox.getMaxY() - wallBox.getMinY());
+                double overlapBottom = Math.abs(playerBox.getMinY() - wallBox.getMaxY());
+                double overlapLeft = Math.abs(playerBox.getMaxX() - wallBox.getMinX());
+                double overlapRight = Math.abs(playerBox.getMinX() - wallBox.getMaxX());
+
+                double smallestOverlap = Math.min(Math.min(overlapTop, overlapBottom), Math.min(overlapLeft, overlapRight));
+
+                // ============ TOP COLLISION ============
+                if (smallestOverlap == overlapTop) {
                     isOnground = true;
+                    setAnchorLocationY(wallBox.getMinY() - getHeight() - 0.5); // margin added
+                    setMotion(0, 0);
+                }
+
+                // ============ BOTTOM COLLISION ============
+                else if (smallestOverlap == overlapBottom) {
+                    setAnchorLocationY(wallBox.getMaxY() + 0.5); // small push down
+                    // Allow falling
+                }
+
+                // ============ LEFT COLLISION ============
+                else if (smallestOverlap == overlapLeft) {
+                    setAnchorLocationX(wallBox.getMinX() - getWidth() - 0.5); // small push left
+                    // Allow falling
+                }
+
+                // ============ RIGHT COLLISION ============
+                else if (smallestOverlap == overlapRight) {
+                    setAnchorLocationX(wallBox.getMaxX() + 0.5); // small push right
+                    // Allow falling
                 }
             }
         }
-
-        if (wallCollision) {
-            setMotion(0, 0);
-        }
     }
-
 
 
     public boolean isStandingOnWall() {
@@ -66,35 +88,30 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
 
-    public final void moveLeft() {
+    public final void moveLeft(boolean verbose) {
         //check 1 pixel voor kant die de speler oploopt
         if (getAnchorLocation().getX() - 1 >= 12) {
             setMotion(speed, 270d);
             setCurrentFrameIndex(0);
             System.out.println("Bewogen naar:");
-            System.out.println("X-Pos: " + getAnchorLocation().getX());
-            System.out.println("Y-Pos: " + getAnchorLocation().getY());
-
-        } else {
-            System.out.println("Muur geraakt");
-            System.out.println("X-Pos: " + getAnchorLocation().getX());
-            System.out.println("Y-Pos: " + getAnchorLocation().getY());
+            if (verbose) {
+                System.out.println("Bewogen naar:");
+                System.out.println("X-Pos: " + getAnchorLocation().getX());
+                System.out.println("Y-Pos: " + getAnchorLocation().getY());
+            }
         }
     }
 
-    public final void moveRight() {
+    public final void moveRight(boolean verbose) {
         //check 1 pixel voor kant die de speler oploopt
         if (getAnchorLocation().getX() + 1 >= getWidth() - 50) {
             setMotion(speed, 90d);
             setCurrentFrameIndex(0);
-            System.out.println("Bewogen naar:");
-            System.out.println("X-Pos: " + getAnchorLocation().getX());
-            System.out.println("Y-Pos: " + getAnchorLocation().getY());
-
-        } else {
-            System.out.println("Muur geraakt");
-            System.out.println("X-Pos: " + getAnchorLocation().getX());
-            System.out.println("Y-Pos: " + getAnchorLocation().getY());
+            if (verbose) {
+                System.out.println("Bewogen naar:");
+                System.out.println("X-Pos: " + getAnchorLocation().getX());
+                System.out.println("Y-Pos: " + getAnchorLocation().getY());
+            }
         }
     }
 
@@ -131,9 +148,16 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 break;
             case LEFT:
                 setAnchorLocationX(1);
+                if (getAnchorLocation().getX() < 0) {
+                    setSpeed(0); // stop leftward movement
+                }
                 break;
             case RIGHT:
                 setAnchorLocationX(getSceneWidth() - getWidth() - 1);
+                if (getAnchorLocation().getX() > 0) {
+                    setSpeed(0); // stop rightward movement
+                }
+                break;
         }
     }
 
@@ -143,8 +167,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
     public void handleMovement(Set<KeyCode> pressedKeys) {
-        //movement is different for each kind of character
     }
+
 
     // =================[ HANDLE isOnGround ]=================
     public boolean getIsOnground() {
