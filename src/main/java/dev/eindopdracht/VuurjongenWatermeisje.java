@@ -1,9 +1,7 @@
 package dev.eindopdracht;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
-import dev.eindopdracht.scenes.Level1;
-import dev.eindopdracht.scenes.TitleScene;
-import dev.eindopdracht.scenes.levelScene;
+import dev.eindopdracht.scenes.*;
 
 public class VuurjongenWatermeisje extends YaegerGame {
     public static void main(String[] args) {
@@ -25,6 +23,8 @@ public class VuurjongenWatermeisje extends YaegerGame {
 
         //levelscenes
         addScene(1, new Level1(this));
+        addScene(2, new Level2(this));
+        addScene(3, new Level3(this));
 
         //others
         addScene(101, new levelScene(this));

@@ -25,7 +25,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private VuurjongenWatermeisje vuurjongenWatermeisje;
 
     public Player(String resource, Coordinate2D location, VuurjongenWatermeisje vuurjongenWatermeisje) {
-        super(resource, location, new Size(50, 70), 1, 1);
+        super(resource, location, new Size(50, 180), 1, 1);
         setGravityConstant(0.08);
         setFrictionConstant(0.04);
     }
