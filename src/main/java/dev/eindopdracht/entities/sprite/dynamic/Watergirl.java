@@ -15,14 +15,22 @@ public class Watergirl extends Player {
 
     @Override
     public void handleMovement(Set<KeyCode> pressedKeys) {
+        boolean moving = false;
+
         if (pressedKeys.contains(KeyCode.LEFT)) {
-            moveLeft();
+            moveLeft(false);
+            moving = true;
         }
         if (pressedKeys.contains(KeyCode.RIGHT)) {
-            moveRight();
+            moveRight(false);
+            moving = true;
         }
         if (pressedKeys.contains(KeyCode.UP)) {
             jump(this);
+            moving = true;
+        }
+        if (!moving) {
+            setSpeed(0); // Stop movement when no key is pressed
         }
     }
 }

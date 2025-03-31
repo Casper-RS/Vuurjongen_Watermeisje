@@ -17,15 +17,23 @@ public class Fireboy extends Player {
 
     @Override
     public void handleMovement(Set<KeyCode> pressedKeys) {
+        boolean moving = false;
+
         if (pressedKeys.contains(KeyCode.A)) {
             System.out.println("Naar links");
-            moveLeft();
+            moveLeft(false);
+            moving = true;
         }
         if (pressedKeys.contains(KeyCode.D)) {
-            moveRight();
+            moveRight(false);
+            moving = true;
         }
         if (pressedKeys.contains(KeyCode.W)) {
             jump(this);
+            moving = true;
+        }
+        if (!moving) {
+            setSpeed(0); // Stop movement when no key is pressed
         }
     }
 }

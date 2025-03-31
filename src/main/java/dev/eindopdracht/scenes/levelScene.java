@@ -27,7 +27,7 @@ public class levelScene extends DynamicScene {
 
     public levelScene(VuurjongenWatermeisje v) {
         this.vuurjongenWatermeisje = v;
-        //this.levelImages = ImageLoader.getImagePaths("LevelImages");
+        //this.levelImages = ImageLoader.getImagePaths("C:\\Users\\Daan van Vliet\\Documents\\GitHub\\Vuurjongen_Watermeisje\\src\\main\\resources\\LevelImages");
         this.levelImages = ImageLoader.getImagePaths("resources/LevelImages");
     }
 
