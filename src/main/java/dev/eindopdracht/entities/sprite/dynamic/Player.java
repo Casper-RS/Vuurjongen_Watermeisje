@@ -18,9 +18,7 @@ import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collider, Collided {
     public boolean isOnground = true;
-    private List<Collider> lastCollisions;
-    private double speed = 1;
-    protected boolean touchingWall = false;
+    private final double speed = 1;
     private VuurjongenWatermeisje vuurjongenWatermeisje;
 
     public Player(String resource, Coordinate2D location, VuurjongenWatermeisje vuurjongenWatermeisje) {
@@ -32,7 +30,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     @Override
     public void onCollision(List<Collider> collidingObjects) {
-        lastCollisions = collidingObjects;
         isOnground = false; // Reset every frame
 
         for (Collider collider : collidingObjects) {
@@ -74,19 +71,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             }
         }
     }
-
-
-    public boolean isStandingOnWall() {
-        for (Collider collider : lastCollisions) {
-            if (collider instanceof Wall) {
-                if (collider.getBoundingBox().getMinY() >= this.getBoundingBox().getMaxY() - 1) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
 
     public final void moveLeft(boolean verbose) {
         //check 1 pixel voor kant die de speler oploopt
@@ -169,19 +153,4 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     public void handleMovement(Set<KeyCode> pressedKeys) {
     }
-
-
-    // =================[ HANDLE isOnGround ]=================
-    public boolean getIsOnground() {
-        return isOnground;
-    }
-
-    public void toggleIsOnground() {
-        isOnground = !isOnground;
-    }
-
-    public void setIsOnground(boolean isOnground) {
-        this.isOnground = isOnground;
-    }
-
 }

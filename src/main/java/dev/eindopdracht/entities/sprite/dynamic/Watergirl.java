@@ -6,9 +6,6 @@ import javafx.scene.input.KeyCode;
 import java.util.Set;
 
 public class Watergirl extends Player {
-
-   boolean isOnGround = false;
-
     public Watergirl(Coordinate2D location, VuurjongenWatermeisje v) {
         super("sprites/watergirl.png", location, v);
     }
