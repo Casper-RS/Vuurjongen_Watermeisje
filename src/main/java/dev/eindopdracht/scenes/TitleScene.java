@@ -15,7 +15,7 @@ import javafx.scene.text.FontWeight;
 public class TitleScene extends StaticScene {
 
     private VuurjongenWatermeisje vuurjongenWatermeisje;
-    private static int currLevelSelection = 1;
+    public static int currLevelSelection = 1;
 
     public TitleScene(VuurjongenWatermeisje vuurjongenWatermeisje){
         this.vuurjongenWatermeisje = vuurjongenWatermeisje;

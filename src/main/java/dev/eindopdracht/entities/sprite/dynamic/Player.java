@@ -10,7 +10,6 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import dev.eindopdracht.VuurjongenWatermeisje;
-import dev.eindopdracht.entities.map.Door;
 import dev.eindopdracht.entities.map.Wall;
 import javafx.scene.input.KeyCode;
 
@@ -34,10 +33,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         isOnground = false; // Reset every frame
 
         for (Collider collider : collidingObjects) {
-            if (collider instanceof Door door){
-                vuurjongenWatermeisje.setActiveScene(0);
-                System.out.println("Deur geraakt");
-            }
+
             if (collider instanceof Wall wall) {
                 var wallBox = wall.getBoundingBox();
                 var playerBox = this.getBoundingBox();

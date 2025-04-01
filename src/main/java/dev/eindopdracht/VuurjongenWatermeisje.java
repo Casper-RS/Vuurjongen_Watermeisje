@@ -4,6 +4,9 @@ import com.github.hanyaeger.api.YaegerGame;
 import dev.eindopdracht.scenes.*;
 
 public class VuurjongenWatermeisje extends YaegerGame {
+
+    public int[] starsObtained = {0, 0, 0};
+
     public static void main(String[] args) {
 
         launch(args);

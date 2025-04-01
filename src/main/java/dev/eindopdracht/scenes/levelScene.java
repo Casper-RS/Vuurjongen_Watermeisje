@@ -21,13 +21,10 @@ public class levelScene extends DynamicScene {
     private VuurjongenWatermeisje vuurjongenWatermeisje;
     private static double MARGIN;
 
-    private int[] starsObtained = {0, 0, 0};
-
     private List<String> levelImages;
 
     public levelScene(VuurjongenWatermeisje v) {
         this.vuurjongenWatermeisje = v;
-        //this.levelImages = ImageLoader.getImagePaths("C:\\Users\\Daan van Vliet\\Documents\\GitHub\\Vuurjongen_Watermeisje\\src\\main\\resources\\LevelImages");
         this.levelImages = ImageLoader.getImagePaths("resources/LevelImages");
     }
 
@@ -44,7 +41,7 @@ public class levelScene extends DynamicScene {
         double yPosition = getHeight() / 2;
 
         for (int i = 0; i < numBoxes; i++) {
-            createLevelBox(new Coordinate2D(sectionWidth * (i + 0.5), yPosition), starsObtained[i], i + 1);
+            createLevelBox(new Coordinate2D(sectionWidth * (i + 0.5), yPosition), vuurjongenWatermeisje.starsObtained[i], i + 1);
         }
 
         addBackButton(0);
