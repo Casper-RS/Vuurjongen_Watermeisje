@@ -16,12 +16,11 @@ import javafx.scene.input.KeyCode;
 import java.util.List;
 import java.util.Set;
 
-public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collider, Collided {
+public abstract class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collider, Collided {
     public boolean isOnground = true;
     private final double speed = 1;
-    private VuurjongenWatermeisje vuurjongenWatermeisje;
 
-    public Player(String resource, Coordinate2D location, VuurjongenWatermeisje vuurjongenWatermeisje) {
+    public Player(String resource, Coordinate2D location) {
         super(resource, location, new Size(30, 45), 1, 1);
         setGravityConstant(0.12);
         setFrictionConstant(0.04);

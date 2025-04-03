@@ -1,6 +1,5 @@
 package dev.eindopdracht.entities.map;
 
-import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.TileMap;
 
 public class Level_1 extends TileMap {

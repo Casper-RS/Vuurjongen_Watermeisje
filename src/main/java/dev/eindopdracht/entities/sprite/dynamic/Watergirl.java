@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Watergirl extends Player {
     public Watergirl(Coordinate2D location, VuurjongenWatermeisje v) {
-        super("sprites/watergirl.png", location, v);
+        super("sprites/watergirl.png", location);
     }
 
     @Override

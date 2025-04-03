@@ -29,7 +29,7 @@ public class VuurjongenWatermeisje extends YaegerGame {
         addScene(2, new Level2(this));
         addScene(3, new Level3(this));
 
-        //others
+        //menu's
         addScene(101, new levelScene(this));
     }
 }

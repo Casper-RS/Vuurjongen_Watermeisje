@@ -8,10 +8,8 @@ import dev.eindopdracht.VuurjongenWatermeisje;
 import dev.eindopdracht.entities.sprite.dynamic.Fireboy;
 import dev.eindopdracht.entities.sprite.dynamic.Watergirl;
 import dev.eindopdracht.scenes.LevelCreator;
-import dev.eindopdracht.scenes.TitleScene;
 
 import java.util.List;
-import java.util.Vector;
 
 public class EscapeDoor extends SpriteEntity implements Collided {
     LevelCreator level;

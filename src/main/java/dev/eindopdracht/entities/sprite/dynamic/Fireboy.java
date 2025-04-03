@@ -9,7 +9,7 @@ import java.util.Set;
 public class Fireboy extends Player {
 
     public Fireboy(Coordinate2D location, VuurjongenWatermeisje v) {
-        super("sprites/fireboy.png", location, v);
+        super("sprites/fireboy.png", location);
     }
 
     @Override

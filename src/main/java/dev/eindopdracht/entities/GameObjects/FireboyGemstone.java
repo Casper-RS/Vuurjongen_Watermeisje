@@ -3,7 +3,6 @@ package dev.eindopdracht.entities.GameObjects;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collider;
 import dev.eindopdracht.entities.sprite.dynamic.Fireboy;
-import dev.eindopdracht.entities.sprite.dynamic.Watergirl;
 import dev.eindopdracht.scenes.LevelCreator;
 
 import java.util.List;
